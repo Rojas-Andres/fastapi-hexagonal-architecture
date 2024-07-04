@@ -1,7 +1,9 @@
 from pydantic import BaseModel
 
 class User(BaseModel):
-    id: int
     name: str
     email: str
-    password: str  # Debe almacenarse como un hash
+    password: str
+
+    class Config:
+        orm_mode = True
