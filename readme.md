@@ -110,4 +110,6 @@ my_hexagonal_app/
     - alembic upgrade heads
 - correr proyecto local
     - uvicorn app.main:app --reload --port 8000
+- Correr el proyecto en modo debug
+    - Tener instalado python en vscode y ejecutarlo con F5 esto ayudara a ejecutar el codigo en modo debug
 #### En models de adaptadores de la base de datos cree 3 modelos para validar que los entendiera alembic
