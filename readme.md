@@ -101,5 +101,13 @@ my_hexagonal_app/
 - email/notification.py: Implementa el servicio de notificaciones por correo electrónico.
 
 ## Correr el proyecto local
-- uvicorn app.main:app --reload --port 8000
+- Instalar virtualenv
+    - virtualenv venv
+- Activar el entorno virtual
+- Instalar requirements local
+    - pip install -r requirements_local.txt
+- Ejecutar migraciones
+    - alembic upgrade heads
+- correr proyecto local
+    - uvicorn app.main:app --reload --port 8000
 #### En models de adaptadores de la base de datos cree 3 modelos para validar que los entendiera alembic
