@@ -113,3 +113,9 @@ my_hexagonal_app/
 - Correr el proyecto en modo debug
     - Tener instalado python en vscode y ejecutarlo con F5 esto ayudara a ejecutar el codigo en modo debug
 #### En models de adaptadores de la base de datos cree 3 modelos para validar que los entendiera alembic
+
+### Validaciones local con pre commit
+- pre-commit install
+    - te instala el hook de pre-commit en tu local y te ejecuta el pre-commit cuando haces el commit
+- Ejecutar pre commit manual
+    - pre-commit run --all-files
