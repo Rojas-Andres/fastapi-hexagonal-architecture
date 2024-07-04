@@ -3,10 +3,5 @@ exclude =
     migrations,
     __pycache__,
     manage.py,
-    settings.py,
-    messages_respose.py
-    init_data.py
-    init_reset_data.py
-    init_reset_data_test.py
-    waiting_for_db.py
+    settings.py
 max-line-length = 120
