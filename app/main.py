@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from app.adapters.api.endpoints import users, auth
-from app.adapters.database import models
 
 app = FastAPI()
 

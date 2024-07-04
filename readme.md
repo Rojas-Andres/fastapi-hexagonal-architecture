@@ -100,5 +100,6 @@ my_hexagonal_app/
 - api/v1/endpoints/users.py: Define los endpoints para la gestión de usuarios.
 - email/notification.py: Implementa el servicio de notificaciones por correo electrónico.
 
-
+## Correr el proyecto local
+- uvicorn app.main:app --reload --port 8000
 #### En models de adaptadores de la base de datos cree 3 modelos para validar que los entendiera alembic

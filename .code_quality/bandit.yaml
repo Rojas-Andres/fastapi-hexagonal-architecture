@@ -1,0 +1,42 @@
+# bandit.yml
+
+# Configuración global
+exclude_dirs:
+  - 'venv'
+  - 'env'
+  - 'build'
+  - 'dist'
+  - 'migrations'
+  - '.code_quality'
+  - 'tests'
+  - 'utils'
+exclude: api/utils/messages_respose.py
+plugins:
+  # Plugins específicos de Django
+  - django_secret
+  - django_templates
+  - django_settings_module
+  - django_debug_true
+
+skips:
+  # Excluir verificación de nombres de archivo
+  - B101
+# Configuración de niveles de severidad
+severities:
+  # Nivel LOW
+  - B104
+  - B303
+
+  # Nivel MEDIUM
+  - B105
+  - B301
+  - B302
+  - B306
+
+  # Nivel HIGH
+  - B401
+  - B403
+  - B405
+
+# Opciones adicionales
+quiet: True  # Ejecución en modo silencioso

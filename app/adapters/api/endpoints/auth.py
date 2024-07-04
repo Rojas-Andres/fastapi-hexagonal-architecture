@@ -1,7 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 
-from app.core.auth.models import LoginRequest
-from app.core.users.models import User as UserCreate
 from sqlalchemy.orm import Session
 from app.core.auth.models import Token
 from app.core.auth.services import AuthService
@@ -9,11 +7,14 @@ from app.core.users.services import UserService
 from app.adapters.database.repository.user_repository import SQLAlchemyUserRepository
 from app.adapters.api.dependencies import get_db
 
+from app.core.auth.models import LoginRequest
+from app.core.users.models import User as UserCreate
+
 router = APIRouter()
 
 
-def get_user_service(db: Session = Depends(get_db)):
-    user_repo = SQLAlchemyUserRepository(db)
+def get_user_service(database: Session = Depends(get_db)):
+    user_repo = SQLAlchemyUserRepository(database)
     return UserService(user_repo)
 
 
