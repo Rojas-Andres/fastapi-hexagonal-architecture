@@ -13,9 +13,9 @@ def get_user_service(db: Session = Depends(get_db)):
     return UserService(user_repo)
 
 
-@router.post("/users/", response_model=User)
-def create_user(user: User, user_service: UserService = Depends(get_user_service)):
-    user_exist = user_service.get_user_by_email(user.email)
-    if user_exist:
-        raise HTTPException(status_code=400, detail="Email already registered")
-    return user_service.create_user(user)
+# @router.post("/users/", response_model=User)
+# def create_user(user: User, user_service: UserService = Depends(get_user_service)):
+#     user_exist = user_service.get_user_by_email(user.email)
+#     if user_exist:
+#         raise HTTPException(status_code=400, detail="Email already registered")
+#     return user_service.create_user(user)

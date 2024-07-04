@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 
-# from fastapi.security import OAuth2PasswordRequestForm
 from app.core.auth.models import LoginRequest
+from app.core.users.models import User as UserCreate
 from sqlalchemy.orm import Session
 from app.core.auth.models import Token
 from app.core.auth.services import AuthService
@@ -32,5 +32,15 @@ def login_for_access_token(
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    access_token = auth_service.create_access_token(data={"sub": user.email})
+    access_token = auth_service.create_access_token(data={"email": user.email})
     return access_token
+
+
+@router.post("/signup", response_model=UserCreate)
+def create_user(
+    user: UserCreate, auth_service: AuthService = Depends(get_auth_service)
+):
+    user_exist = auth_service.user_service.get_user_by_email(user.email)
+    if user_exist:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    return auth_service.create_user(user)
