@@ -1,17 +1,20 @@
 from datetime import timedelta, datetime
 from typing import Union
+
 # from jose import JWTError, jwt
 from passlib.context import CryptContext
 from .ports.repository import AuthRepository
 from .models import Token
 from ..users.services import UserService
 from app.core.users.models import User
+
 # Configuración de seguridad (esto debería estar en un archivo de configuración separado)
 SECRET_KEY = "your-secret-key"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
 
 class AuthService:
     def __init__(self, user_service: UserService):

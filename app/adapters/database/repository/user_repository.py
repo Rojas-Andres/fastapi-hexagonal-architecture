@@ -5,6 +5,7 @@ from app.core.users.models import User as DomainUser
 from app.core.users.ports.repository import UserRepository
 from app.adapters.database.models.user_models import User as DBUser
 
+
 class SQLAlchemyUserRepository(UserRepository):
     def __init__(self, db: Session):
         self.db = db

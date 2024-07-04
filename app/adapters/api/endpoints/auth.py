@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+
 # from fastapi.security import OAuth2PasswordRequestForm
 from app.core.auth.models import LoginRequest
 from sqlalchemy.orm import Session
@@ -10,17 +11,19 @@ from app.adapters.api.dependencies import get_db
 
 router = APIRouter()
 
+
 def get_user_service(db: Session = Depends(get_db)):
     user_repo = SQLAlchemyUserRepository(db)
     return UserService(user_repo)
 
+
 def get_auth_service(user_service: UserService = Depends(get_user_service)):
     return AuthService(user_service)
 
+
 @router.post("/login", response_model=Token)
 def login_for_access_token(
-    login_user: LoginRequest, 
-    auth_service: AuthService = Depends(get_auth_service)
+    login_user: LoginRequest, auth_service: AuthService = Depends(get_auth_service)
 ):
     user = auth_service.authenticate_user(login_user.email, login_user.password)
     if not user:
