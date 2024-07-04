@@ -9,7 +9,7 @@ on:
       - staging
   push:
     branches:
-      - develop
+      - main
 
 jobs:
   pre-commit-validate:
